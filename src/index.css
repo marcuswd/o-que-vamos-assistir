@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+label{
+  display: block;
+  cursor: pointer;
+  margin-bottom: .225rem;
+}
