@@ -8,6 +8,9 @@ import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../db";
 
 interface AddProgramInputProps {
+  // addAt: string
+  // editedAt: string,
+  // watchedAt: string,
   nameProgram: string
   genre: string
   stream: []

@@ -3,9 +3,9 @@ import { db } from "../db";
 import { collection, getDocs } from "firebase/firestore";
 
 interface AddProgramInputProps {
-  addAt: string
-  editedAt: string,
-  watchedAt: string,
+  // addAt: string
+  // editedAt: string,
+  // watchedAt: string,
   nameProgram: string
   genre: string
   stream: []
@@ -29,7 +29,9 @@ export function AddProgramProvider({ children }: React.PropsWithChildren) {
     await getDocs(collection(db, "programs")).then((QuerySnapshot) => {
       const newData = QuerySnapshot.docs.map((doc) => ({ ...doc.data() } as AddProgramInputProps));
       newData.filter((value) => {
-        return newValue.push(value.programs);
+        if (value.programs) {
+          newValue.push(value.programs);
+        }
       })
 
       setPrograms(newValue);
