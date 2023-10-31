@@ -1,0 +1,12 @@
+th,
+td{
+  padding: .5rem;
+}
+
+td span{
+  display: block;
+}
+
+td span + span{
+  margin-top: .5rem;
+}

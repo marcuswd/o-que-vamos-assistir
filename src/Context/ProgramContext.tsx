@@ -15,14 +15,17 @@ interface AddProgramInputProps {
 interface AddProgramContextProps {
   programs: AddProgramInputProps[]
   setPrograms: Dispatch<SetStateAction<AddProgramInputProps[]>>
+  openModal: boolean
+  setOpenModal: Dispatch<SetStateAction<boolean>>
 }
 
 export const AddProgramContext = createContext<AddProgramContextProps>(
-  { programs: [], setPrograms() { } }
+  { programs: [], setPrograms() { }, openModal: false, setOpenModal() { } }
 )
 
 export function AddProgramProvider({ children }: React.PropsWithChildren) {
   const [programs, setPrograms] = useState<AddProgramInputProps[]>([]);
+  const [openModal, setOpenModal] = useState<boolean>(false);
 
   const getData = async () => {
     const newValue: AddProgramInputProps[] = [];
@@ -39,15 +42,11 @@ export function AddProgramProvider({ children }: React.PropsWithChildren) {
   }
 
   useEffect(() => {
-    // const ListPrograms = localStorage.getItem("programs");
-    // if (ListPrograms && JSON.parse(ListPrograms).length > 0) {
-    //   setPrograms(JSON.parse(ListPrograms))
-    // }
     getData();
   }, [])
 
   return (
-    <AddProgramContext.Provider value={{ programs, setPrograms }}>
+    <AddProgramContext.Provider value={{ programs, setPrograms, openModal, setOpenModal }}>
       {children}
     </AddProgramContext.Provider>
   )

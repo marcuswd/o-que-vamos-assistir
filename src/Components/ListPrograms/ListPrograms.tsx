@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AddProgramContext } from "../../Context/ProgramContext";
+import "./styles.css";
 
 export default function ListPrograms() {
   const { programs } = useContext(AddProgramContext);
@@ -7,17 +8,17 @@ export default function ListPrograms() {
     <>
       {programs.length ?
         <>
-          <table className="w-6/12 mx-auto mb-10">
+          <table className="w-6/12 mx-auto mb-10 table-auto border-collapse">
             <thead>
-              <tr>
-                <th className="text-left">Nome do Programa</th>
-                <th className="text-left">Gênero</th>
-                <th className="text-left">Disponível em</th>
+              <tr className="bg-slate-500 text-white">
+                <th className="text-left font-normal">Nome do Programa</th>
+                <th className="text-left font-normal">Gênero</th>
+                <th className="text-left font-normal">Disponível em</th>
               </tr>
             </thead>
             <tbody>
               {programs.map((program, index) =>
-                <tr key={index}>
+                <tr key={index} className={`${index % 2 ? "bg-slate-200" : ""}`}>
                   <td className="text-left py-2">{program.nameProgram}</td>
                   <td className="text-left">{program.genre}</td>
                   <td className="text-left">{program.stream.map((s, index) => <span key={`indexstream${index}`}>{s}</span>)}</td>

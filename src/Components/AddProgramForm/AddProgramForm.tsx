@@ -18,7 +18,8 @@ interface AddProgramInputProps {
 
 export const AddProgramForm = () => {
 
-  const { programs, setPrograms } = useContext(AddProgramContext);
+  const { programs, setPrograms, openModal, setOpenModal } = useContext(AddProgramContext);
+
 
   const {
     register,
@@ -38,13 +39,17 @@ export const AddProgramForm = () => {
     } catch (e) {
       console.error("Error adding document: ", e);
     }
-
+    setOpenModal(false);
     reset()
   }
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)} className="w-1/2 mx-auto">
+      <form onSubmit={handleSubmit(onSubmit)} className={`w-1/2 mx-auto p-4 rounded ${openModal ? "add-form" : "hidden"}`}>
+        <header className="mb-3 flex justify-between align-middle items-center">
+          <h2 className="text-lg font-bold">Adicionar novo Programa</h2>
+          <button onClick={() => setOpenModal(false)} className="bg-teal-500 py-1 px-2 text-white uppercase font-bold text-sm hover:bg-teal-800 border-0 rounded transition-colors">x</button>
+        </header>
         <div className="single-input">
           <label htmlFor="nameProgram">Nome do Programa</label>
           <input type="text" {...register("nameProgram", { required: true })} name="nameProgram" id="nameProgram" placeholder="Digite o nome do programa" className="h-10 px-3 bg-teal-50 border border-teal-500 rounded block w-full" />
@@ -93,9 +98,10 @@ export const AddProgramForm = () => {
         </div>
 
         <div className="single-input">
-          <button type="submit" className="mt-6 bg-teal-500 py-4 text-white uppercase font-bold text-sm hover:bg-teal-800 border-0 rounded transition-colors w-full">Adicionar</button>
+          <button type="submit" className="mt-0 bg-teal-500 py-4 text-white uppercase font-bold text-sm hover:bg-teal-800 border-0 rounded transition-colors w-full">Adicionar</button>
         </div>
       </form>
+      {openModal ? <div className='overlay'></div> : ""}
     </>
   )
 }
