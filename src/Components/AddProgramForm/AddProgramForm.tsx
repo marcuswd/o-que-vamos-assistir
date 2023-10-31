@@ -45,7 +45,7 @@ export const AddProgramForm = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)} className={`w-1/2 mx-auto p-4 rounded ${openModal ? "add-form" : "hidden"}`}>
+      <form onSubmit={handleSubmit(onSubmit)} className={`xl:w-1/2 w-11/12 mx-auto p-4 rounded ${openModal ? "add-form" : "hidden"}`}>
         <header className="mb-3 flex justify-between align-middle items-center">
           <h2 className="text-lg font-bold">Adicionar novo Programa</h2>
           <button onClick={() => setOpenModal(false)} className="bg-teal-500 py-1 px-2 text-white uppercase font-bold text-sm hover:bg-teal-800 border-0 rounded transition-colors">x</button>

@@ -19,3 +19,10 @@
   position: fixed;
   background-color: rgba(0,0,0, .5);
 }
+
+@media all and (max-width: 767px){
+  .add-form{
+    top: 1rem;
+    transform: translate(-50%, 0);
+  }
+}
