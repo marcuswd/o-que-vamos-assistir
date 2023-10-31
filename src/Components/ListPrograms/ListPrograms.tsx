@@ -8,7 +8,7 @@ export default function ListPrograms() {
     <>
       {programs.length ?
         <>
-          <table className="w-6/12 mx-auto mb-10 table-auto border-collapse">
+          <table className="xl:w-6/12 w-11/12 mx-auto mb-10 table-auto border-collapse rounded overflow-hidden xl:text-md text-xs">
             <thead>
               <tr className="bg-slate-500 text-white">
                 <th className="text-left font-normal">Nome do Programa</th>
