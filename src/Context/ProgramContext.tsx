@@ -3,10 +3,11 @@ import { db } from "../db";
 import { collection, getDocs } from "firebase/firestore";
 
 interface AddProgramInputProps {
-  // addAt: string
-  // editedAt: string,
-  // watchedAt: string,
+  addAt: string
+  editedAt: string,
+  watchedAt: string,
   nameProgram: string
+  typeOfProgram: string | "Série" | "Filme"
   genre: string
   stream: []
   programs?: null

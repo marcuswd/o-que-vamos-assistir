@@ -6,7 +6,7 @@ export default function Header() {
   const { openModal, setOpenModal } = useContext(AddProgramContext);
 
   return (
-    <header className="xl:py-6 py-2 flex container mx-auto xl:w-6/12 w-11/12 justify-between align-middle items-center mb-3 font-bold">
+    <header className="xl:py-6 py-2 flex container mx-auto xl:w-8/12 w-11/12 justify-between align-middle items-center mb-3 font-bold">
       <h1 className="text-center xl:text-2xl text-slate-500">O que vamos assistir?</h1>
 
       <button

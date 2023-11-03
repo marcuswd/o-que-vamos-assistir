@@ -8,10 +8,11 @@ import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../db";
 
 interface AddProgramInputProps {
-  // addAt: string
-  // editedAt: string,
-  // watchedAt: string,
+  addAt: string
+  editedAt: string,
+  watchedAt: string,
   nameProgram: string
+  typeOfProgram: string | "Série" | "Filme"
   genre: string
   stream: []
 }
@@ -30,6 +31,13 @@ export const AddProgramForm = () => {
   } = useForm<AddProgramInputProps>()
 
   const onSubmit: SubmitHandler<AddProgramInputProps> = async (data: AddProgramInputProps) => {
+
+    const today = new Date().toString();
+
+    data['addAt'] = today;
+    data['editedAt'] = '';
+    data['watchedAt'] = '';
+
     try {
       const docRef = await addDoc(collection(db, "programs"), {
         programs: data
@@ -53,6 +61,14 @@ export const AddProgramForm = () => {
         <div className="single-input">
           <label htmlFor="nameProgram">Nome do Programa</label>
           <input type="text" {...register("nameProgram", { required: true })} name="nameProgram" id="nameProgram" placeholder="Digite o nome do programa" className="h-10 px-3 bg-teal-50 border border-teal-500 rounded block w-full" />
+        </div>
+        <div className="single-input flex">
+          <label htmlFor="typeOfProgramFilme" className="me-3">
+            <input type="radio" id="typeOfProgramFilme" value="Filme" {...register('typeOfProgram', { required: true })} /> Filme
+          </label>
+          <label htmlFor="typeOfProgramSeriado">
+            <input type="radio" id="typeOfProgramSeriado" value="Seriado" {...register('typeOfProgram', { required: true })} /> Seriado
+          </label>
         </div>
         <div className="single-input">
           <label htmlFor="genre">Genre</label>
